@@ -37,8 +37,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Chromium for résumé PDF
+        run: npx playwright install --with-deps chromium
+
       - name: Build
         run: npm run build
+
+      # Renders dist/resume.html to Muhammad-Baseer-Khan-Resume.pdf. The script
+      # fails the build if a page overflows its paper box or the fonts do not
+      # load, so a broken résumé can never reach Pages.
+      - name: Generate résumé PDF
+        run: npm run resume:pdf
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

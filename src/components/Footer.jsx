@@ -58,14 +58,17 @@ export function Footer() {
                 <Icon className="h-4 w-4" />
               </a>
             ))}
-            <button
-              type="button"
-              onClick={() => window.print()}
-              aria-label="Print this page"
+            {/* Opens the generated résumé PDF rather than printing the marketing
+                page — the PDF is the typeset document meant for paper. */}
+            <a
+              href={profile.resumeFile}
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="Open the résumé PDF to print"
               className="grid h-10 w-10 place-items-center rounded-xl border border-line-strong bg-surface text-ink-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:text-brand"
             >
               <Printer className="h-4 w-4" />
-            </button>
+            </a>
           </div>
         </div>
 
@@ -75,10 +78,10 @@ export function Footer() {
           <p>
             © {year} {profile.name}. All rights reserved.
           </p>
-          <p className="inline-flex items-center gap-1.5">
+          {/* <p className="inline-flex items-center gap-1.5">
             Built with React, Vite &amp; Tailwind CSS
             <Heart className="h-3.5 w-3.5 fill-current text-rose-500" />
-          </p>
+          </p> */}
         </div>
       </div>
     </footer>

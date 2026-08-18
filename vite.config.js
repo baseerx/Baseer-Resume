@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 const entry = (file) => fileURLToPath(new URL(file, import.meta.url))
 
 export default defineConfig({
-  base: '/Baseer-Resume/',
+  base: './',
   plugins: [react(), tailwindcss()],
   build: {
     outDir: 'dist',

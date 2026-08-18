@@ -1,0 +1,460 @@
+@import "tailwindcss";
+
+/* Theme is driven by a class on <html> so the toggle works in both directions. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------ *
+ *  Design tokens
+ * ------------------------------------------------------------------ */
+:root {
+  --bg: #f6f8fd;
+  --bg-soft: #ffffff;
+  --surface: rgb(255 255 255 / 0.72);
+  --surface-solid: #ffffff;
+  --line: rgb(15 23 42 / 0.10);
+  --line-strong: rgb(15 23 42 / 0.18);
+  --ink: #0a1020;
+  --ink-soft: #47566e;
+  --ink-faint: #6b7b93;
+  --brand: #3457f5;
+  --brand-2: #0891b2;
+  --brand-3: #7c3aed;
+  --glow-1: rgb(52 87 245 / 0.22);
+  --glow-2: rgb(8 145 178 / 0.18);
+  --glow-3: rgb(124 58 237 / 0.16);
+  --grid: rgb(15 23 42 / 0.055);
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.05), 0 12px 32px -12px rgb(15 23 42 / 0.16);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #05070e;
+  --bg-soft: #0a0f1d;
+  --surface: rgb(255 255 255 / 0.045);
+  --surface-solid: #0d1322;
+  --line: rgb(255 255 255 / 0.09);
+  --line-strong: rgb(255 255 255 / 0.18);
+  --ink: #e9eefb;
+  --ink-soft: #a3b3cc;
+  --ink-faint: #6f8299;
+  --brand: #6c93ff;
+  --brand-2: #22d3ee;
+  --brand-3: #a78bfa;
+  --glow-1: rgb(59 91 219 / 0.30);
+  --glow-2: rgb(34 211 238 / 0.18);
+  --glow-3: rgb(139 92 246 / 0.22);
+  --grid: rgb(255 255 255 / 0.045);
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 20px 50px -24px rgb(0 0 0 / 0.75);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-surface: var(--surface);
+  --color-surface-solid: var(--surface-solid);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-brand: var(--brand);
+  --color-brand-2: var(--brand-2);
+  --color-brand-3: var(--brand-3);
+
+  --font-display: "Sora", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+
+  --animate-aurora: aurora 22s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 11s ease-in-out infinite;
+  --animate-spin-slow: spin 18s linear infinite;
+  --animate-shimmer: shimmer 2.6s linear infinite;
+  --animate-pulse-ring: pulse-ring 3.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-gradient: gradient-pan 9s ease infinite;
+}
+
+@keyframes aurora {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(4%, -5%, 0) scale(1.12);
+  }
+  66% {
+    transform: translate3d(-4%, 4%, 0) scale(0.94);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -180% 0;
+  }
+  100% {
+    background-position: 180% 0;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.94);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.14);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.94);
+    opacity: 0;
+  }
+}
+
+@keyframes gradient-pan {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ *  Base
+ * ------------------------------------------------------------------ */
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+    /* `clip` (not `hidden`) keeps html from becoming a scroll container, so
+       fixed/sticky children and smooth scrolling keep working. */
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.022em;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--brand) 34%, transparent);
+    color: var(--ink);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--brand) 42%, transparent);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, var(--brand) 70%, transparent);
+    background-clip: content-box;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ *  Components
+ * ------------------------------------------------------------------ */
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-7 lg:px-8;
+  }
+
+  .glass {
+    background: var(--surface);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid var(--line);
+  }
+
+  /* Panels that sit directly over content (mobile menu sheet) need a solid
+     backing — plain glass lets the portrait bleed through. */
+  .sheet {
+    background: color-mix(in oklab, var(--surface-solid) 96%, transparent);
+    border: 1px solid var(--line-strong);
+    backdrop-filter: blur(26px) saturate(170%);
+    -webkit-backdrop-filter: blur(26px) saturate(170%);
+  }
+
+  /* Floating hero badges sit over the portrait, so they need a near-opaque
+     plate rather than the usual translucent glass. */
+  .badge-float {
+    background: color-mix(in oklab, var(--surface-solid) 90%, transparent);
+    border: 1px solid var(--line-strong);
+    backdrop-filter: blur(18px) saturate(170%);
+    -webkit-backdrop-filter: blur(18px) saturate(170%);
+  }
+
+  .card {
+    @apply relative rounded-2xl;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: var(--shadow-card);
+  }
+
+  .gradient-text {
+    background-image: linear-gradient(
+      100deg,
+      var(--brand) 0%,
+      var(--brand-2) 45%,
+      var(--brand-3) 100%
+    );
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: var(--animate-gradient);
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium;
+    background: color-mix(in oklab, var(--brand) 10%, transparent);
+    border: 1px solid color-mix(in oklab, var(--brand) 24%, transparent);
+    color: color-mix(in oklab, var(--brand) 82%, var(--ink));
+  }
+
+  .btn {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-300 will-change-transform;
+  }
+
+  .btn-primary {
+    color: #fff;
+    background-image: linear-gradient(110deg, var(--brand), var(--brand-3));
+    box-shadow: 0 10px 30px -12px var(--glow-1), inset 0 1px 0 rgb(255 255 255 / 0.22);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 42px -14px var(--glow-1), inset 0 1px 0 rgb(255 255 255 / 0.28);
+  }
+
+  .btn-ghost {
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    backdrop-filter: blur(12px);
+  }
+  .btn-ghost:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in oklab, var(--brand) 55%, transparent);
+    color: color-mix(in oklab, var(--brand) 70%, var(--ink));
+  }
+
+  .rule {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--brand) 45%, transparent),
+      transparent
+    );
+  }
+
+  .marquee-track {
+    animation: marquee 38s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* soft fade at the bottom of the cut-out portrait */
+  .portrait-mask {
+    -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 99%);
+    mask-image: linear-gradient(to bottom, #000 68%, transparent 99%);
+  }
+
+  .grid-bg {
+    background-image: linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 35%, transparent 78%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 35%, transparent 78%);
+  }
+
+  /* hover sheen that sweeps across a card */
+  .sheen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 38%,
+      color-mix(in oklab, var(--brand) 22%, transparent) 50%,
+      transparent 62%
+    );
+    background-size: 220% 100%;
+    transition: opacity 0.35s ease;
+  }
+  .sheen:hover::after {
+    opacity: 1;
+    animation: var(--animate-shimmer);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ *  Accessibility + print
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media print {
+  /* Force the light, high-contrast token set regardless of the on-screen
+     theme — otherwise dark-mode text prints as pale grey on white. */
+  :root,
+  .dark {
+    --bg: #ffffff;
+    --bg-soft: #ffffff;
+    --surface: #ffffff;
+    --surface-solid: #ffffff;
+    --line: #d7dce5;
+    --line-strong: #b4bcca;
+    --ink: #0d1526;
+    --ink-soft: #303c53;
+    --ink-faint: #4f5b70;
+    --brand: #1a44c8;
+    --brand-2: #0b6d86;
+    --brand-3: #5b21b6;
+    --glow-1: transparent;
+    --glow-2: transparent;
+    --glow-3: transparent;
+    --grid: transparent;
+    --shadow-card: none;
+    color-scheme: light;
+  }
+
+  html {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  /* Scroll-reveal animations leave off-screen content at opacity 0 with an
+     inline style. Without this the printed pages come out blank. */
+  *,
+  *::before,
+  *::after {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Collapsed accordion panels are height-animated, not unmounted, so they
+     can be forced open for paper. */
+  .print-expand {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Meter fills are width-animated from 0; restore their real value. */
+  .meter-fill {
+    width: var(--fill) !important;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: var(--ink) !important;
+  }
+
+  .card,
+  .glass,
+  .sheet,
+  .badge-float {
+    background: #fff !important;
+    border: 1px solid var(--line) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .gradient-text {
+    background-image: none !important;
+    color: var(--brand) !important;
+    -webkit-text-fill-color: var(--brand) !important;
+    animation: none !important;
+  }
+
+  .portrait-mask {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
+  }
+}

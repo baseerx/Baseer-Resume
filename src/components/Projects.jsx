@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, Lock, Rocket, Star } from "lucide-react";
+import { ArrowUpRight, Lock, Rocket, Sparkles, Star } from "lucide-react";
 import { projects } from "../data/resume";
 import { Section, SectionHeading } from "./ui/Section";
 import { Reveal } from "./ui/Reveal";
@@ -83,12 +83,17 @@ export function Projects() {
 
 function ProjectCard({ project }) {
   const external = Boolean(project.url);
+  // the flagship has no public URL — it links inward to its own spotlight section
+  const internal = !external && Boolean(project.flagship);
   const host = external ? project.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "") : null;
 
-  const Wrapper = external ? "a" : "div";
+  const linked = external || internal;
+  const Wrapper = linked ? "a" : "div";
   const wrapperProps = external
     ? { href: project.url, target: "_blank", rel: "noreferrer noopener" }
-    : {};
+    : internal
+      ? { href: "#nice" }
+      : {};
 
   return (
     <SpotlightCard className="h-full">
@@ -98,13 +103,25 @@ function ProjectCard({ project }) {
 
           <span
             className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg border transition-all duration-300 ${
-              external
+              linked
                 ? "border-line-strong text-ink-faint group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:border-brand/50 group-hover:bg-brand/10 group-hover:text-brand"
                 : "border-line text-ink-faint/60"
             }`}
-            title={external ? "Open live site" : "Internal / enterprise system"}
+            title={
+              external
+                ? "Open live site"
+                : internal
+                  ? "Read the NICE spotlight"
+                  : "Internal / enterprise system"
+            }
           >
-            {external ? <ArrowUpRight className="h-4 w-4" /> : <Lock className="h-3.5 w-3.5" />}
+            {external ? (
+              <ArrowUpRight className="h-4 w-4" />
+            ) : internal ? (
+              <Sparkles className="h-4 w-4" />
+            ) : (
+              <Lock className="h-3.5 w-3.5" />
+            )}
           </span>
         </div>
 
@@ -112,7 +129,12 @@ function ProjectCard({ project }) {
           {project.name}
         </h3>
 
-        {project.featured ? (
+        {project.flagship ? (
+          <span className="mt-1.5 inline-flex w-fit items-center gap-1 text-[0.68rem] font-semibold uppercase tracking-wider text-brand">
+            <Sparkles className="h-3 w-3" />
+            Flagship · Endorsed
+          </span>
+        ) : project.featured ? (
           <span className="mt-1.5 inline-flex w-fit items-center gap-1 text-[0.68rem] font-semibold uppercase tracking-wider text-amber-500">
             <Star className="h-3 w-3 fill-current" />
             Featured

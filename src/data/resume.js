@@ -34,7 +34,7 @@ export const profile = {
 export const stats = [
   { value: 9, suffix: "+", label: "Years of Experience" },
   { value: 14, suffix: "+", label: "Projects Delivered" },
-  { value: 4, suffix: "", label: "Awards & Commendations" },
+  { value: 5, suffix: "", label: "Awards & Commendations" },
   { value: 2, suffix: "", label: "Master's Degrees" },
 ];
 
@@ -218,13 +218,14 @@ export const projects = [
     featured: true,
   },
   {
-    name: "News Information Collection Exchange",
+    name: "NICE — News Intelligence Collection Exchange",
     url: null,
     category: "AI",
     org: "ISMO",
+    flagship: true,
     description:
-      "Agentic AI application that collects, exchanges and summarises news information automatically.",
-    tech: ["Google ADK", "LangChain", "RAG", "Python"],
+      "Flagship agentic AI intelligence platform for Pakistan's power sector — autonomous collection, tagging, sentiment scoring and automated executive briefs. Backed by an ISMO technical confirmation letter.",
+    tech: ["Google ADK", "LangChain", "RAG", "Python", "Agentic AI"],
     featured: true,
   },
   {
@@ -445,6 +446,12 @@ export const achievements = [
     issuer: "NPCC",
     icon: "Award",
   },
+  {
+    title: "Technical Confirmation & Support Letter — NICE",
+    year: "2026",
+    issuer: "Independent System & Market Operator (ISMO)",
+    icon: "BadgeCheck",
+  },
 ];
 
 export const languages = [
@@ -457,8 +464,117 @@ export const navLinks = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
+  { id: "nice", label: "NICE" },
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
   { id: "education", label: "Education" },
   { id: "contact", label: "Contact" },
 ];
+
+/**
+ * NICE — the flagship agentic AI platform, plus the ISMO Technical Confirmation
+ * and Support Letter that independently backs the contribution.
+ * Sources: ISMO/2026/Dir.Communications/6581 dated 29 June 2026, and the
+ * ISMO Executive Brief (reporting period 01–07 Aug 2026) produced by NICE.
+ */
+export const flagship = {
+  id: "nice",
+  acronym: "NICE",
+  name: "News Intelligence Collection Exchange",
+  org: "Independent System & Market Operator (ISMO)",
+  status: "In-house · Production",
+  positioning:
+    "One of Pakistan's most advanced agentic AI platforms built for the power sector — an in-house digital intelligence system that organises, verifies and makes structured use of large volumes of media, policy, regulatory and sector-related information.",
+  summary:
+    "NICE turns the unstructured noise around Pakistan's power sector — news, policy movement, regulatory notifications and public discourse — into a verified, structured and searchable intelligence base. Autonomous agents collect and categorise coverage, score its tone, benchmark every institution mentioned, and assemble the findings into an executive brief that decision-makers can act on. I led the technical design, development and implementation: full-stack build, interface, database handling, system functionality and user access flows.",
+  role: "Technical design · Development · Implementation",
+  tech: [
+    "Python",
+    "Agentic AI",
+    "Google ADK",
+    "LangChain",
+    "RAG",
+    "MCP Servers",
+    "Ollama",
+    "FastAPI",
+    "Vue.js",
+    "Tailwind CSS",
+  ],
+  coreFunctions: [
+    {
+      icon: "Newspaper",
+      title: "Autonomous Collection",
+      body: "Continuously ingests large volumes of media, policy, regulatory and sector-related information across the power sector, policy environment and public discourse.",
+    },
+    {
+      icon: "Tags",
+      title: "Agentic Categorisation",
+      body: "AI agents classify unstructured coverage against a controlled tag taxonomy, converting free-form reporting into structured, queryable records.",
+    },
+    {
+      icon: "Gauge",
+      title: "Sentiment & Perception Scoring",
+      body: "Scores every item positive, neutral or negative, then rolls the balance into a Public Confidence Index and a Government Reputation Score tracked over time.",
+    },
+    {
+      icon: "Users",
+      title: "Author Intelligence",
+      body: "Profiles journalists and commentators by volume, tone split and influence — surfacing the high-impact voices worth engaging and the consistently critical ones.",
+    },
+    {
+      icon: "Building2",
+      title: "Institutional Benchmarking",
+      body: "Compares mention volume against reputation score across ISMO, NTDC, DISCOs, NEPRA, CPPA-G, PPIB, the Power Division and private IPPs.",
+    },
+    {
+      icon: "SearchCheck",
+      title: "Human-in-the-Loop Verification",
+      body: "Structured analyst review sits between collection and publication, so the platform assists judgement on what is verified rather than replacing it.",
+    },
+    {
+      icon: "FileText",
+      title: "Automated Executive Briefs",
+      body: "Assembles the periodic brief end to end — executive summary, top three insights, sentiment breakdown and the themes driving positive and adverse coverage.",
+    },
+    {
+      icon: "Brain",
+      title: "Institutional Knowledge Base",
+      body: "Retains a searchable record of coverage, positions and developments, improving internal knowledge management across reporting periods.",
+    },
+    {
+      icon: "Radar",
+      title: "Early Signal Detection",
+      body: "Flags emerging narratives, knowledge gaps and reputational risk early enough for proactive clarification instead of reactive damage control.",
+    },
+  ],
+  signals: [
+    { label: "Public Confidence Index", value: "57%" },
+    { label: "Government Reputation Score", value: "57%" },
+    { label: "Sentiment split", value: "41 / 21 / 38" },
+    { label: "Institutions benchmarked", value: "8" },
+  ],
+  signalsNote:
+    "Indicative outputs from an ISMO Executive Brief generated by NICE for the 01–07 Aug 2026 reporting period.",
+  endorsement: {
+    title: "Technical Confirmation & Support Letter",
+    subject: "Mr. Muhammad Baseer Khan's role in the development of NICE",
+    reference: "ISMO/2026/Dir.Communications/6581",
+    date: "29 June 2026",
+    issuer: "Directorate of Communications",
+    organisation: "Independent System & Market Operator (ISMO) of Pakistan",
+    issuerNote: "Originator of the NICE concept and functional direction",
+    quotes: [
+      "Mr. Baseer Khan played a significant role in translating the concept into a workable digital platform.",
+      "His work reflected a strong understanding of modern software development practices and the ability to convert a policy and communication-oriented idea into a functional technology product.",
+      "Mr. Baseer Khan has also demonstrated relevant experience in agentic AI development and AI-assisted system design.",
+    ],
+    contributions: [
+      "Full-stack development work",
+      "Interface development",
+      "Database handling",
+      "System functionality",
+      "User access flows",
+      "Technical structuring for internal use",
+    ],
+  },
+};

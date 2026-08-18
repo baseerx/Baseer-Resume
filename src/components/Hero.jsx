@@ -250,7 +250,7 @@ export function Hero() {
               <motion.div
                 animate={reduced ? undefined : { y: [0, -11, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="no-print badge-float absolute left-0 top-[16%] hidden -translate-x-[62%] rounded-xl px-3.5 py-2 shadow-xl sm:block"
+                className="no-print badge-float absolute left-0 top-[16%] hidden -translate-x-[62%] rounded-xl px-3.5 py-2 shadow-xl sm:block lg:-translate-x-[34%] xl:-translate-x-[62%]"
               >
                 <p className="font-mono text-[0.62rem] uppercase tracking-widest text-ink-faint">
                   Experience
@@ -261,7 +261,7 @@ export function Hero() {
               <motion.div
                 animate={reduced ? undefined : { y: [0, 12, 0] }}
                 transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-                className="no-print badge-float absolute right-0 top-[46%] hidden translate-x-[62%] rounded-xl px-3.5 py-2 shadow-xl sm:block"
+                className="no-print badge-float absolute right-0 top-[46%] hidden translate-x-[62%] rounded-xl px-3.5 py-2 shadow-xl sm:block lg:translate-x-[34%] xl:translate-x-[62%]"
               >
                 <p className="font-mono text-[0.62rem] uppercase tracking-widest text-ink-faint">
                   MS Data Science
@@ -289,13 +289,13 @@ export function Hero() {
           className="card mt-16 grid grid-cols-2 divide-line lg:mt-20 lg:grid-cols-4 lg:divide-x"
         >
           {stats.map((stat) => (
-            <div key={stat.label} className="px-5 py-6 text-center sm:py-7">
+            <div key={stat.label} className="px-3 py-6 text-center sm:px-5 sm:py-7">
               <p className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
                 <span className="gradient-text">
                   <Counter value={stat.value} suffix={stat.suffix} />
                 </span>
               </p>
-              <p className="mt-1.5 text-[0.72rem] font-medium uppercase tracking-[0.14em] text-ink-faint sm:text-xs">
+              <p className="mt-1.5 text-[0.62rem] font-medium uppercase tracking-[0.06em] text-ink-faint sm:text-xs sm:tracking-[0.14em]">
                 {stat.label}
               </p>
             </div>

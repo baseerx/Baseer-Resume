@@ -550,7 +550,7 @@ export const flagship = {
   signals: [
     { label: "Public Confidence Index", value: "57%" },
     { label: "Government Reputation Score", value: "57%" },
-    { label: "Sentiment split", value: "41 / 21 / 38" },
+    { label: "Sentiment · pos/neu/neg", value: "41/21/38" },
     { label: "Institutions benchmarked", value: "8" },
   ],
   signalsNote:

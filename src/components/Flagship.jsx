@@ -69,8 +69,8 @@ export function Flagship() {
 
             <div className="mt-7 grid grid-cols-2 gap-x-5 gap-y-5 border-t border-line pt-6 sm:grid-cols-4">
               {flagship.signals.map((signal) => (
-                <div key={signal.label}>
-                  <p className="font-mono text-[1.05rem] font-semibold leading-none text-ink">
+                <div className="min-w-0" key={signal.label}>
+                  <p className="whitespace-nowrap font-mono text-[1rem] font-semibold leading-none text-ink">
                     {signal.value}
                   </p>
                   <p className="mt-2 text-[0.7rem] leading-snug text-ink-faint">{signal.label}</p>
@@ -125,11 +125,19 @@ export function Flagship() {
                 {endorsement.subject}
               </p>
 
+              {/* The reference number is a long unbreakable mono string, so it
+                  takes a full row of its own rather than colliding with the
+                  date beside it. */}
               <dl className="mt-6 grid gap-x-5 gap-y-4 border-y border-line py-5 sm:grid-cols-2">
-                <Meta label="Reference" value={endorsement.reference} mono />
+                <Meta
+                  label="Reference"
+                  value={endorsement.reference}
+                  mono
+                  className="sm:col-span-2"
+                />
                 <Meta label="Dated" value={endorsement.date} />
                 <Meta label="Issued by" value={endorsement.issuer} />
-                <Meta label="Organisation" value={endorsement.organisation} />
+                <Meta label="Organisation" value={endorsement.organisation} className="sm:col-span-2" />
               </dl>
 
               <p className="mt-3 text-[0.7rem] leading-relaxed text-ink-faint">
@@ -206,13 +214,16 @@ export function Flagship() {
   );
 }
 
-function Meta({ label, value, mono = false }) {
+function Meta({ label, value, mono = false, className = "" }) {
+  // `min-w-0` lets the grid cell shrink below its content width, and
+  // `[overflow-wrap:anywhere]` lets a long slash-separated reference wrap
+  // instead of spilling into the neighbouring cell.
   const valueClass = mono
-    ? "mt-1 font-mono text-[0.76rem] font-medium leading-snug text-ink"
-    : "mt-1 text-[0.82rem] font-medium leading-snug text-ink";
+    ? "mt-1 font-mono text-[0.76rem] font-medium leading-snug text-ink [overflow-wrap:anywhere]"
+    : "mt-1 text-[0.82rem] font-medium leading-snug text-ink [overflow-wrap:anywhere]";
 
   return (
-    <div>
+    <div className={`min-w-0 ${className}`}>
       <dt className="font-mono text-[0.62rem] uppercase tracking-[0.2em] text-ink-faint">
         {label}
       </dt>

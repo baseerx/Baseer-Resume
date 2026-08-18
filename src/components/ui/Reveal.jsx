@@ -66,8 +66,11 @@ export function RevealItem({ children, className = "", from = "up" }) {
   const offset = OFFSETS[from] ?? OFFSETS.up;
 
   return (
+    // `min-w-0` because these are nearly always grid items: without it the
+    // default `min-width: auto` lets long unbreakable content (an email
+    // address, a URL) inflate the track and overflow the row.
     <motion.div
-      className={className}
+      className={`min-w-0 ${className}`}
       variants={{
         hidden: reduced ? { opacity: 0 } : { opacity: 0, ...offset, filter: "blur(5px)" },
         show: {

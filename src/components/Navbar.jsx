@@ -75,7 +75,7 @@ export function Navbar({ isDark, onToggleTheme }) {
                     <a
                       href={`#${link.id}`}
                       onClick={(e) => go(e, link.id)}
-                      className={`relative block rounded-lg px-3.5 py-2 text-[0.82rem] font-medium transition-colors duration-300 ${
+                      className={`relative block whitespace-nowrap rounded-lg px-2.5 py-2 text-[0.78rem] font-medium transition-colors duration-300 xl:px-3.5 xl:text-[0.82rem] ${
                         isActive ? "text-ink" : "text-ink-faint hover:text-ink"
                       }`}
                     >

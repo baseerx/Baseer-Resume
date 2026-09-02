@@ -60,6 +60,18 @@ export function Assistant() {
     if (open) setTimeout(() => inputRef.current?.focus(), 240);
   }, [open]);
 
+  // The panel fills the bottom-right corner, where the back-to-top arrow also
+  // lives. Flagging the root lets that arrow step aside via CSS rather than
+  // threading state between two unrelated components.
+  useEffect(() => {
+    const root = document.documentElement;
+    if (open) root.dataset.assistant = "open";
+    else delete root.dataset.assistant;
+    return () => {
+      delete root.dataset.assistant;
+    };
+  }, [open]);
+
   // Escape closes, and the panel traps nothing else — the page stays usable
   useEffect(() => {
     if (!open) return undefined;
@@ -108,7 +120,7 @@ export function Assistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={reduced ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="no-print fixed inset-x-3 bottom-3 z-[65] flex max-h-[82svh] flex-col overflow-hidden rounded-2xl sheet shadow-2xl sm:inset-x-auto sm:right-6 sm:bottom-24 sm:w-[26rem] sm:max-h-[min(34rem,72svh)] lg:w-[28rem]"
+            className="no-print fixed inset-x-3 bottom-[5.75rem] z-[65] flex max-h-[calc(100svh-9rem)] flex-col overflow-hidden rounded-2xl sheet shadow-2xl sm:inset-x-auto sm:right-6 sm:bottom-[6.5rem] sm:w-[26rem] sm:max-h-[min(34rem,calc(100svh-10rem))] lg:w-[28rem]"
           >
             <Header onClose={() => setOpen(false)} />
 
@@ -149,11 +161,10 @@ function Launcher({ open, onClick }) {
       aria-expanded={open}
       whileHover={{ y: -3 }}
       whileTap={{ scale: 0.94 }}
-      // On phones the panel spans the full width, so the launcher would sit on
-      // top of the composer — the header's close button covers it there.
-      className={`no-print fixed bottom-6 left-6 z-[66] h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-brand to-brand-3 text-white shadow-xl shadow-brand/30 sm:h-14 sm:w-14 ${
-        open ? "hidden sm:grid" : "grid"
-      }`}
+      // Anchors the bottom-right corner. The back-to-top arrow stacks above it
+      // rather than the other way round, because that arrow only appears once
+      // you have scrolled — the launcher has to hold the corner on its own.
+      className="no-print fixed bottom-6 right-6 z-[66] grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-brand to-brand-3 text-white shadow-xl shadow-brand/30 sm:h-14 sm:w-14"
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.span

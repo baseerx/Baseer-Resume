@@ -188,8 +188,8 @@ export function Flagship() {
             Core functions of the platform
           </h3>
           <p className="mx-auto mt-3 max-w-2xl text-pretty text-[0.9rem] leading-relaxed text-ink-soft">
-            Nine capabilities that carry raw, unstructured coverage all the way through to a
-            verified brief a decision-maker can act on.
+            {flagship.coreFunctions.length} capabilities that carry raw, unstructured coverage all
+            the way through to a verified brief a decision-maker can act on.
           </p>
         </Reveal>
 

@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { Briefcase, Building2, CalendarDays, ChevronDown, MapPin } from "lucide-react";
-import { experience } from "../data/resume";
+import { experience, profile } from "../data/resume";
 import { Section, SectionHeading } from "./ui/Section";
 import { Reveal } from "./ui/Reveal";
 import { SpotlightCard } from "./ui/SpotlightCard";
@@ -28,7 +28,8 @@ export function Experience() {
         icon={Briefcase}
         title={
           <>
-            Nine years of <span className="gradient-text">shipping systems</span> that matter
+            {profile.experienceYears} years of <span className="gradient-text">shipping systems</span>{" "}
+            that matter
           </>
         }
         lead="From national grid platforms to US product teams — full-time leadership alongside contract work delivered in parallel."

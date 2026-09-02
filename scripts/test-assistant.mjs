@@ -180,6 +180,28 @@ async function main() {
     check("section link scrolls to NICE", Math.abs(jumped.top) < 340, `top=${jumped.top}`);
     check("section link closes the panel", jumped.dialogOpen === false);
 
+    // desktop: launcher bottom-right, back-to-top stacked above it, no overlap
+    await page.evaluate(() => window.scrollTo(0, 1500));
+    await page.waitForTimeout(700);
+    const stack = await page.evaluate((vw) => {
+      const launcher = document.querySelector('button[aria-label="Ask about this résumé"]');
+      const top = document.querySelector('button[aria-label="Back to top"]');
+      if (!launcher || !top) return { ok: false, why: "button missing" };
+      const l = launcher.getBoundingClientRect();
+      const t = top.getBoundingClientRect();
+      const vertical = Math.min(l.bottom, t.bottom) - Math.max(l.top, t.top);
+      const horizontal = Math.min(l.right, t.right) - Math.max(l.left, t.left);
+      return {
+        ok: true,
+        bothRight: l.left > vw / 2 && t.left > vw / 2,
+        overlapping: vertical > 1 && horizontal > 1,
+        arrowAbove: t.bottom <= l.top + 1,
+      };
+    }, 1280);
+    check("desktop: launcher and back-to-top are both right-aligned", stack.ok && stack.bothRight);
+    check("desktop: back-to-top does not overlap the launcher", stack.ok && !stack.overlapping);
+    check("desktop: back-to-top stacks above the launcher", stack.ok && stack.arrowAbove);
+
     check("no page errors", errors.length === 0, errors.join(" | "));
     await ctx.close();
   }
@@ -190,6 +212,12 @@ async function main() {
     const page = await ctx.newPage();
     await page.goto(url, { waitUntil: "networkidle" });
     await page.waitForTimeout(1300);
+    // past the 700px threshold so the back-to-top arrow is really mounted —
+    // otherwise "it is hidden" would pass simply because it does not exist
+    await page.evaluate(() => window.scrollTo(0, 1600));
+    await page.waitForTimeout(600);
+    const arrowMounted = await page.$(".back-to-top");
+    check(`${w}px: back-to-top is mounted after scrolling`, arrowMounted !== null);
     await openAssistant(page);
     await ask(page, "show all projects in a table");
 
@@ -224,6 +252,30 @@ async function main() {
              Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > 2;
     });
     check(`${w}px: launcher does not cover the composer`, clash === false);
+
+    // the launcher belongs in the bottom-right corner, with the panel above it
+    const geom = await page.evaluate((vw) => {
+      const btn =
+        document.querySelector('button[aria-label="Close the résumé assistant"]') ||
+        document.querySelector('button[aria-label="Ask about this résumé"]');
+      const panel = document.querySelector('div[role="dialog"]');
+      const b = btn.getBoundingClientRect();
+      const p = panel.getBoundingClientRect();
+      return {
+        onRight: b.left + b.width / 2 > vw / 2,
+        rightGap: Math.round(vw - b.right),
+        panelAbove: p.bottom <= b.top + 1,
+        overlap: Math.round(Math.min(p.bottom, b.bottom) - Math.max(p.top, b.top)),
+      };
+    }, w);
+    check(`${w}px: launcher sits on the right`, geom.onRight, `rightGap=${geom.rightGap}`);
+    check(`${w}px: panel opens above the launcher`, geom.panelAbove, `overlap=${geom.overlap}px`);
+
+    const arrowState = await page.evaluate(() => {
+      const arrow = document.querySelector(".back-to-top");
+      return arrow ? getComputedStyle(arrow).display : "absent";
+    });
+    check(`${w}px: back-to-top steps aside for the panel`, arrowState === "none", arrowState);
     await ctx.close();
   }
 

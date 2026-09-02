@@ -294,6 +294,11 @@
     color: color-mix(in oklab, var(--brand) 70%, var(--ink));
   }
 
+  /* The assistant panel takes over the bottom-right corner while it is open. */
+  [data-assistant="open"] .back-to-top {
+    display: none !important;
+  }
+
   .rule {
     height: 1px;
     background: linear-gradient(

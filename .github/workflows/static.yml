@@ -49,6 +49,12 @@ jobs:
       - name: Generate résumé PDF
         run: npm run resume:pdf
 
+      # Retrieval correctness, the assistant driven in a real browser, and the
+      # responsive sweep from 320px to 1920px. A regression fails the deploy
+      # rather than reaching the live site.
+      - name: Test
+        run: npm test
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

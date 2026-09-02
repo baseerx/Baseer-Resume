@@ -12,6 +12,7 @@ import { Education } from "./components/Education";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { Preloader } from "./components/Preloader";
+import { Assistant } from "./components/Assistant";
 import { useTheme } from "./hooks/useTheme";
 
 export default function App() {
@@ -62,6 +63,7 @@ export default function App() {
 
       <Footer />
       <BackToTop />
+      <Assistant />
     </>
   );
 }

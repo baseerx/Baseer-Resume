@@ -8,7 +8,10 @@
     "preview": "vite preview --port 4173",
     "resume:pdf": "node scripts/generate-resume-pdf.mjs",
     "build:all": "vite build && node scripts/generate-resume-pdf.mjs",
-    "audit:responsive": "node scripts/audit-responsive.mjs"
+    "audit:responsive": "node scripts/audit-responsive.mjs",
+    "test:search": "node scripts/test-search.mjs",
+    "test:assistant": "node scripts/test-assistant.mjs",
+    "test": "node scripts/test-search.mjs && node scripts/test-assistant.mjs && node scripts/audit-responsive.mjs"
   },
   "author": "Muhammad Baseer Khan",
   "license": "MIT",

@@ -14,10 +14,11 @@ export function Education() {
         icon={GraduationCap}
         title={
           <>
-            Two master&apos;s degrees and a <span className="gradient-text">silver medal</span>
+            Doctoral research atop{" "}
+            <span className="gradient-text">two master&apos;s degrees</span>
           </>
         }
-        lead="Formal grounding in data science and computer science, alongside recognition earned on the job."
+        lead="Formal grounding in data science and computer science — now extending into a PhD — alongside a silver medal and recognition earned on the job."
       />
 
       <div className="grid gap-6 lg:grid-cols-[1.02fr_0.98fr] lg:gap-8">
@@ -36,6 +37,15 @@ export function Education() {
                       <h3 className="text-[1.05rem] font-semibold leading-snug text-ink">
                         {item.degree}
                       </h3>
+                      {item.inProgress ? (
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-brand/30 bg-brand/10 px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider text-brand">
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand/70" />
+                            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
+                          </span>
+                          In progress
+                        </span>
+                      ) : null}
                       {item.honour ? (
                         <span className="inline-flex items-center gap-1 rounded-full border border-amber-400/35 bg-amber-400/12 px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider text-amber-500">
                           <Sparkles className="h-3 w-3" />
@@ -44,10 +54,12 @@ export function Education() {
                       ) : null}
                     </div>
 
-                    <p className="mt-1 text-[0.9rem] font-medium text-brand">{item.institution}</p>
+                    {item.institution ? (
+                      <p className="mt-1 text-[0.9rem] font-medium text-brand">{item.institution}</p>
+                    ) : null}
 
                     <p className="mt-1.5 font-mono text-[0.72rem] uppercase tracking-wider text-ink-faint">
-                      {item.period} · {item.location}
+                      {[item.period, item.location].filter(Boolean).join(" · ")}
                     </p>
 
                     <p className="mt-3 text-pretty text-[0.85rem] leading-relaxed text-ink-soft">

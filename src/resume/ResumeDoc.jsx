@@ -119,9 +119,11 @@ export function ResumeDoc() {
                 </p>
                 <span className="edu__year">{item.period}</span>
               </div>
-              <p className="edu__inst">
-                {item.institution} — {item.location}
-              </p>
+              {item.institution ? (
+                <p className="edu__inst">
+                  {[item.institution, item.location].filter(Boolean).join(" — ")}
+                </p>
+              ) : null}
               <p className="edu__note">{item.note}</p>
             </div>
           ))}

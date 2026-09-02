@@ -250,32 +250,32 @@ export function Hero() {
               <motion.div
                 animate={reduced ? undefined : { y: [0, -11, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="no-print badge-float absolute left-0 top-[16%] hidden -translate-x-[62%] rounded-xl px-3.5 py-2 shadow-xl sm:block lg:-translate-x-[34%] xl:-translate-x-[62%]"
+                className="no-print badge-float absolute z-20 left-0 top-[14%] -translate-x-[16%] rounded-xl px-2.5 py-1.5 shadow-xl sm:-translate-x-[62%] sm:px-3.5 sm:py-2 lg:-translate-x-[34%] xl:-translate-x-[62%]"
               >
-                <p className="font-mono text-[0.62rem] uppercase tracking-widest text-ink-faint">
+                <p className="font-mono text-[0.55rem] uppercase tracking-widest text-ink-faint sm:text-[0.62rem]">
                   Experience
                 </p>
-                <p className="text-sm font-bold text-ink">9+ Years</p>
+                <p className="text-[0.72rem] font-bold text-ink sm:text-sm">{profile.experienceYears} Years</p>
               </motion.div>
 
               <motion.div
                 animate={reduced ? undefined : { y: [0, 12, 0] }}
                 transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-                className="no-print badge-float absolute right-0 top-[46%] hidden translate-x-[62%] rounded-xl px-3.5 py-2 shadow-xl sm:block lg:translate-x-[34%] xl:translate-x-[62%]"
+                className="no-print badge-float absolute z-20 right-0 top-[46%] translate-x-[16%] rounded-xl px-2.5 py-1.5 shadow-xl sm:translate-x-[62%] sm:px-3.5 sm:py-2 lg:translate-x-[34%] xl:translate-x-[62%]"
               >
-                <p className="font-mono text-[0.62rem] uppercase tracking-widest text-ink-faint">
+                <p className="font-mono text-[0.55rem] uppercase tracking-widest text-ink-faint sm:text-[0.62rem]">
                   MS Data Science
                 </p>
-                <p className="gradient-text text-sm font-bold">Silver Medalist</p>
+                <p className="gradient-text text-[0.72rem] font-bold sm:text-sm">Silver Medalist</p>
               </motion.div>
 
               <motion.div
                 animate={reduced ? undefined : { y: [0, -8, 0] }}
                 transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-                className="no-print badge-float absolute bottom-[3%] left-1/2 hidden -translate-x-1/2 rounded-xl px-4 py-2 text-center shadow-xl sm:block"
+                className="no-print badge-float absolute z-20 bottom-[3%] left-1/2 -translate-x-1/2 rounded-xl px-3 py-1.5 text-center shadow-xl sm:px-4 sm:py-2"
               >
-                <p className="text-sm font-bold text-ink">Agentic AI</p>
-                <p className="font-mono text-[0.62rem] text-ink-faint">RAG · LangChain · ADK</p>
+                <p className="text-[0.72rem] font-bold text-ink sm:text-sm">Agentic AI</p>
+                <p className="font-mono text-[0.55rem] text-ink-faint sm:text-[0.62rem]">RAG · LangChain · ADK</p>
               </motion.div>
             </div>
           </motion.div>
@@ -307,7 +307,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
-          className="no-print mt-12 hidden justify-center lg:flex"
+          className="no-print mt-10 flex justify-center sm:mt-12"
         >
           <motion.span
             animate={reduced ? undefined : { y: [0, 7, 0] }}

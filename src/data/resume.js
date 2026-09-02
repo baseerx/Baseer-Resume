@@ -15,7 +15,7 @@ export const profile = {
     "Data Science Practitioner",
   ],
   tagline: "Full-Stack Development · Agentic AI · Applied Data Science",
-  experienceYears: "9+",
+  experienceYears: "10+",
   location: "Islamabad, Pakistan",
   address: "Flat C-21, NPCC Colony, Jhelum Road, G-8/4, Islamabad",
   phone: "+92 345 9275557",
@@ -28,11 +28,11 @@ export const profile = {
   avatar: "./avatar.png",
   available: true,
   summary:
-    "Senior Full Stack Developer with 9+ years of experience and a strong specialization in Artificial Intelligence and applied Data Science, backed by a Master's in Data Science and a Bachelor's in Computer Science. My recent work centers on Agentic AI, Retrieval-Augmented Generation (RAG), and machine learning–driven automation, complemented by solid foundations in data analysis and scalable software engineering alongside foundation models in forecasting. I am keen to build on this experience through doctoral research and contribute meaningfully to advanced work in the field.",
+    "Senior Full Stack Developer with 10+ years of experience and a strong specialization in Artificial Intelligence and applied Data Science, backed by a Master's in Data Science and a Bachelor's in Computer Science. My recent work centers on Agentic AI, Retrieval-Augmented Generation (RAG), and machine learning–driven automation, complemented by solid foundations in data analysis and scalable software engineering alongside foundation models in forecasting. I am keen to build on this experience through doctoral research and contribute meaningfully to advanced work in the field.",
 };
 
 export const stats = [
-  { value: 9, suffix: "+", label: "Years of Experience" },
+  { value: 10, suffix: "+", label: "Years of Experience" },
   { value: 14, suffix: "+", label: "Projects Delivered" },
   { value: 5, suffix: "", label: "Awards & Commendations" },
   { value: 2, suffix: "", label: "Master's Degrees" },
@@ -403,6 +403,15 @@ export const tools = [
 ];
 
 export const education = [
+  {
+    degree: "PhD in Computer Science",
+    honour: null,
+    institution: "FAST-NUCES, Islamabad",
+    period: "In progress",
+    location: "Islamabad, PK",
+    inProgress: true,
+    note: "Doctoral research extending my work in agentic AI, retrieval-augmented generation and forecasting with foundation models.",
+  },
   {
     degree: "MS in Data Science",
     honour: "Silver Medalist",

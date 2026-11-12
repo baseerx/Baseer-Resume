@@ -4,9 +4,11 @@ import { BackToTop, ScrollProgress } from "./components/ui/ScrollProgress";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
+import { AIEngineering } from "./components/AIEngineering";
 import { Experience } from "./components/Experience";
 import { Flagship } from "./components/Flagship";
 import { Projects } from "./components/Projects";
+import { Research } from "./components/Research";
 import { Skills } from "./components/Skills";
 import { Education } from "./components/Education";
 import { Contact } from "./components/Contact";
@@ -53,9 +55,11 @@ export default function App() {
       <main>
         <Hero />
         <About />
+        <AIEngineering />
         <Experience />
         <Flagship />
         <Projects />
+        <Research />
         <Skills />
         <Education />
         <Contact />

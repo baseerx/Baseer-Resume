@@ -1,12 +1,12 @@
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { Cpu, Database, Palette, Wrench } from "lucide-react";
+import { Brain, Cpu, Database, Palette, Wrench } from "lucide-react";
 import { skillGroups, tools } from "../data/resume";
 import { Section, SectionHeading } from "./ui/Section";
 import { Reveal } from "./ui/Reveal";
 import { SpotlightCard } from "./ui/SpotlightCard";
 
-const ICONS = { Palette, Cpu, Database };
+const ICONS = { Brain, Palette, Cpu, Database };
 
 const ACCENTS = {
   brand: "from-brand to-brand-2",
@@ -25,10 +25,10 @@ export function Skills() {
             The toolkit behind the <span className="gradient-text">delivery</span>
           </>
         }
-        lead="Depth across the full stack, with the AI and data layer that has driven the last two years of work."
+        lead="AI and LLM engineering on top of depth across the full stack and the data layer underneath it."
       />
 
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
         {skillGroups.map((group, gi) => {
           const Icon = ICONS[group.icon] ?? Cpu;
           return (

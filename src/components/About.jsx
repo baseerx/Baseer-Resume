@@ -33,7 +33,7 @@ export function About() {
             <div className="mt-7 grid gap-3 border-t border-line pt-6 sm:grid-cols-2">
               <Detail label="Based in" value={profile.location} />
               <Detail label="Experience" value={`${profile.experienceYears} years`} />
-              <Detail label="Focus" value="Agentic AI · RAG · Data Science" />
+              <Detail label="Focus" value="AI Engineering · Agentic AI · RAG" />
               <Detail label="Education" value="MS Data Science — Silver Medalist" />
             </div>
 

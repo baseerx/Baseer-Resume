@@ -51,6 +51,14 @@ const CASES = [
   { q: "show all tools", kind: "table", dataset: "tools" },
   { q: "projects table with name and url", kind: "table", dataset: "projects", columns: ["name", "url"] },
 
+  // --- AI engineering / research -----------------------------------------
+  { q: "which vector databases has he used", kind: "answer", must: /Qdrant|FAISS|ChromaDB/ },
+  { q: "does he know LangGraph", kind: "answer", must: /LangGraph/ },
+  { q: "what is his experience with MCP", kind: "answer", must: /MCP|Model Context Protocol/ },
+  { q: "tell me about the x-ray report generation research", kind: "answer", must: /X-ray/i },
+  { q: "does he use PyTorch", kind: "answer", must: /PyTorch/ },
+  { q: "is he an AI engineer", kind: "answer", must: /AI|LLM/ },
+
   // --- résumé actions ------------------------------------------------------
   { q: "download the resume", kind: "resume" },
   { q: "can I get your CV as a pdf", kind: "resume" },
@@ -106,7 +114,7 @@ if (csv.split("\n").length !== datasets.projects.rows.length + 1) structural.pus
 if (!/"/.test(toCSV(["a"], [{ a: 'x,y "z"' }]))) structural.push("CSV does not quote separators");
 
 // every ranked result must be reachable from a real nav section
-const NAV = new Set(["home", "about", "experience", "nice", "projects", "skills", "education", "contact"]);
+const NAV = new Set(["home", "about", "ai", "experience", "nice", "projects", "research", "skills", "education", "contact"]);
 for (const d of documents) if (!NAV.has(d.section)) structural.push(`document ${d.id} points at unknown section ${d.section}`);
 
 console.log(`\n  Assistant retrieval tests\n`);

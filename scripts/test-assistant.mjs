@@ -13,6 +13,7 @@ import { createServer } from "node:http";
 import { extname, join, normalize, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
+import { projects } from "../src/data/resume.js";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const DIST = resolve(ROOT, "dist");
@@ -123,7 +124,7 @@ async function main() {
       };
     });
     check("renders a table", table !== null && table.rows > 0, JSON.stringify(table));
-    check("table has 14 project rows", table?.rows === 14, `got ${table?.rows}`);
+    check(`table has ${projects.length} project rows`, table?.rows === projects.length, `got ${table?.rows}`);
     check("table headers include name", table?.headers.includes("name"), (table?.headers ?? []).join(","));
 
     // asked-for columns only

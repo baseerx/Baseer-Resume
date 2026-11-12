@@ -51,6 +51,8 @@ function Typewriter({ words, className = "" }) {
   );
 }
 
+const AI_STACK = ["LLMs", "LangGraph", "Google ADK", "RAG", "MCP", "Vector DBs", "PyTorch"];
+
 const CONTACT_CHIPS = [
   { icon: MapPin, label: profile.location, href: null },
   { icon: Mail, label: profile.email, href: `mailto:${profile.email}` },
@@ -80,7 +82,7 @@ export function Hero() {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                   </span>
-                  Open to doctoral research &amp; senior engineering roles
+                  Open to senior AI engineering roles &amp; doctoral research
                 </span>
               </motion.div>
             ) : null}
@@ -117,11 +119,28 @@ export function Hero() {
               className="mx-auto mt-5 max-w-xl text-pretty text-[0.96rem] leading-relaxed text-ink-soft lg:mx-0 sm:text-base"
             >
               {profile.experienceYears} years building production systems across power-sector
-              enterprise platforms and US product teams — now focused on{" "}
-              <span className="font-semibold text-ink">Agentic AI</span>,{" "}
-              <span className="font-semibold text-ink">Retrieval-Augmented Generation</span> and
-              machine-learning driven automation.
+              enterprise platforms and US product teams — now engineering{" "}
+              <span className="font-semibold text-ink">LLM applications</span>,{" "}
+              <span className="font-semibold text-ink">multi-agent systems</span> and{" "}
+              <span className="font-semibold text-ink">Retrieval-Augmented Generation</span> that run in
+              production.
             </motion.p>
+
+            {/* AI stack at a glance */}
+            <motion.ul
+              {...fade(0.29)}
+              aria-label="Core AI stack"
+              className="mt-5 flex flex-wrap justify-center gap-1.5 lg:justify-start"
+            >
+              {AI_STACK.map((tech) => (
+                <li
+                  key={tech}
+                  className="rounded-lg border border-line-strong bg-surface px-2.5 py-1 font-mono text-[0.68rem] text-ink-soft"
+                >
+                  {tech}
+                </li>
+              ))}
+            </motion.ul>
 
             {/* quick contact */}
             <motion.ul
@@ -274,8 +293,8 @@ export function Hero() {
                 transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
                 className="no-print badge-float absolute z-20 bottom-[3%] left-1/2 -translate-x-1/2 rounded-xl px-3 py-1.5 text-center shadow-xl sm:px-4 sm:py-2"
               >
-                <p className="text-[0.72rem] font-bold text-ink sm:text-sm">Agentic AI</p>
-                <p className="font-mono text-[0.55rem] text-ink-faint sm:text-[0.62rem]">RAG · LangChain · ADK</p>
+                <p className="text-[0.72rem] font-bold text-ink sm:text-sm">AI Engineer</p>
+                <p className="font-mono text-[0.55rem] text-ink-faint sm:text-[0.62rem]">LLMs · RAG · Agents</p>
               </motion.div>
             </div>
           </motion.div>

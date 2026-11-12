@@ -58,7 +58,9 @@ export function Navbar({ isDark, onToggleTheme }) {
                 {profile.initials}
                 <span className="absolute inset-0 translate-x-[-120%] bg-white/25 transition-transform duration-700 group-hover:translate-x-[120%]" />
               </span>
-              <span className="hidden text-sm font-semibold tracking-tight sm:block">
+              {/* the full link row needs the width on desktop, so the name
+                  shows only where the links collapse into the menu */}
+              <span className="hidden whitespace-nowrap text-sm font-semibold tracking-tight sm:block lg:hidden">
                 {profile.shortName}
                 <span className="ml-1.5 font-mono text-[0.65rem] font-normal text-ink-faint">
                   /dev

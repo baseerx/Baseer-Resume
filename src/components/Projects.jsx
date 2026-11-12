@@ -23,10 +23,10 @@ export function Projects() {
         icon={Rocket}
         title={
           <>
-            Fourteen products, <span className="gradient-text">live in the wild</span>
+            {projects.length} projects, <span className="gradient-text">research to production</span>
           </>
         }
-        lead="National-scale utility platforms, AI-first products and a portfolio of high-performance marketing sites."
+        lead="Agentic AI and RAG systems, deep-learning research, national-scale utility platforms, AI-first products and high-performance marketing sites."
       />
 
       <Reveal className="mb-10 flex justify-center">

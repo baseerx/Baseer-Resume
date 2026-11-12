@@ -10,11 +10,12 @@ export const profile = {
   title: "Sr. Software Engineer",
   roles: [
     "Sr. Software Engineer",
+    "AI Engineer",
     "Full-Stack Developer",
     "Agentic AI Developer",
     "Data Science Practitioner",
   ],
-  tagline: "Full-Stack Development · Agentic AI · Applied Data Science",
+  tagline: "Software Engineering · AI Engineering · Agentic AI · Full-Stack Development",
   experienceYears: "10+",
   location: "Islamabad, Pakistan",
   address: "Flat C-21, NPCC Colony, Jhelum Road, G-8/4, Islamabad",
@@ -28,7 +29,7 @@ export const profile = {
   avatar: "./avatar.png",
   available: true,
   summary:
-    "Senior Full Stack Developer with 10+ years of experience and a strong specialization in Artificial Intelligence and applied Data Science, backed by a Master's in Data Science and a Bachelor's in Computer Science. My recent work centers on Agentic AI, Retrieval-Augmented Generation (RAG), and machine learning–driven automation, complemented by solid foundations in data analysis and scalable software engineering alongside foundation models in forecasting. I am keen to build on this experience through doctoral research and contribute meaningfully to advanced work in the field.",
+    "Senior Software Engineer and AI Engineer with 10+ years of full-stack experience and a strong specialization in Artificial Intelligence and applied Data Science, backed by a Master's in Data Science and a Bachelor's in Computer Science. My recent work centers on LLM applications, Agentic AI and multi-agent systems, Retrieval-Augmented Generation (RAG), and machine learning–driven automation taken to production, complemented by solid foundations in data analysis and scalable software engineering alongside foundation models in forecasting. I am keen to build on this experience through doctoral research and contribute meaningfully to advanced work in the field.",
 };
 
 export const stats = [
@@ -42,7 +43,7 @@ export const highlights = [
   {
     icon: "Brain",
     title: "Agentic AI & RAG",
-    body: "Chatbot and workflow automation with Google ADK and LangChain, MCP servers and locally hosted models via Ollama.",
+    body: "Chatbot and workflow automation with Google ADK, LangChain and LangGraph, MCP servers, vector search and locally hosted models via Ollama.",
   },
   {
     icon: "LineChart",
@@ -81,6 +82,8 @@ export const experience = [
       "Agentic AI utilisation through MCP servers and Ollama-based local model hosting.",
       "Chatbot automation built on the Agentic AI frameworks Google ADK and LangChain.",
       "RAG techniques applied to automation workflows using Google ADK and LangChain.",
+      "Multi-agent orchestration and agentic RAG with LangGraph and Google ADK, using function calling and MCP for tool integration.",
+      "Retrieval pipelines over ChromaDB, FAISS and Qdrant — embeddings, semantic search and hybrid retrieval.",
       "DevOps on Windows Server using IIS together with Windows services.",
       "Pipelines that automate server build and deployment.",
       "Running and managing Python framework applications as services on Windows servers.",
@@ -90,8 +93,12 @@ export const experience = [
       "FastAPI",
       "Google ADK",
       "LangChain",
+      "LangGraph",
       "MCP",
       "Ollama",
+      "ChromaDB",
+      "FAISS",
+      "Qdrant",
       "Vue.js",
       "React.js",
       "Tailwind CSS",
@@ -208,16 +215,6 @@ export const experience = [
 
 export const projects = [
   {
-    name: "SDXP — SO Data Exchange Portal",
-    url: null,
-    category: "Enterprise",
-    org: "NTDC",
-    description:
-      "National-scale data exchange portal between the System Operator and Independent Power Producers.",
-    tech: [".NET Core", "Oracle", "Dashboards"],
-    featured: true,
-  },
-  {
     name: "NICE — News Intelligence Collection Exchange",
     url: null,
     category: "AI",
@@ -229,6 +226,46 @@ export const projects = [
     featured: true,
   },
   {
+    name: "Enterprise Agentic AI & RAG Applications",
+    url: null,
+    category: "AI",
+    org: "ISMO",
+    description:
+      "Internal chatbots and workflow automation built on agentic RAG — multi-agent orchestration, tool calling over MCP and retrieval across vector stores, served with locally hosted models.",
+    tech: ["LangGraph", "Google ADK", "LangChain", "MCP", "ChromaDB", "FAISS", "Qdrant", "Ollama"],
+    featured: true,
+  },
+  {
+    name: "X-ray Report Generation",
+    url: null,
+    category: "Research",
+    org: "Research",
+    description:
+      "Deep-learning research into generating radiology reports from X-ray images, pairing computer-vision encoders with Transformer architectures.",
+    tech: ["PyTorch", "CNNs", "Transformers", "Computer Vision"],
+    featured: true,
+  },
+  {
+    name: "Power Sector Forecasting & Analytics",
+    url: null,
+    category: "AI",
+    org: "NTDC · ISMO",
+    description:
+      "EDA and KDD on marginal-price data with machine learning and foundation models, feeding AI-based analytics for the power sector.",
+    tech: ["Foundation Models", "scikit-learn", "Pandas", "Plotly"],
+    featured: true,
+  },
+  {
+    name: "ISMO Attendance Management System",
+    url: null,
+    category: "Enterprise",
+    org: "ISMO",
+    description:
+      "Full-stack biometric attendance management and reporting solution — device data captured, processed and surfaced through dashboards and reports.",
+    tech: ["Full Stack", "Biometric Integration", "REST APIs", "SQL", "Reporting"],
+    featured: true,
+  },
+  {
     name: "Artziii",
     url: "https://app.artiziii.com",
     category: "AI",
@@ -236,6 +273,16 @@ export const projects = [
     description:
       "AI-first publishing app: ChatGPT-driven book generation, PDF-to-EPUB conversion and image/text AI tools.",
     tech: ["Flask", "OpenAI", "AWS EC2"],
+    featured: true,
+  },
+  {
+    name: "SDXP — SO Data Exchange Portal",
+    url: null,
+    category: "Enterprise",
+    org: "NTDC",
+    description:
+      "National-scale data exchange portal between the System Operator and Independent Power Producers.",
+    tech: [".NET Core", "Oracle", "Dashboards"],
     featured: true,
   },
   {
@@ -345,12 +392,27 @@ export const projects = [
 
 export const skillGroups = [
   {
+    title: "AI & LLM Engineering",
+    icon: "Brain",
+    accent: "brand-3",
+    skills: [
+      { name: "LLMs & Generative AI", level: 90 },
+      { name: "Agentic & Multi-Agent Systems", level: 90 },
+      { name: "LangChain / LangGraph / Google ADK", level: 88 },
+      { name: "RAG & Agentic RAG", level: 89 },
+      { name: "ChromaDB / FAISS / Qdrant", level: 86 },
+      { name: "Prompting & Function Calling", level: 90 },
+      { name: "PyTorch & Deep Learning", level: 82 },
+    ],
+  },
+  {
     title: "Frontend",
     icon: "Palette",
     accent: "brand",
     skills: [
       { name: "Vue.js", level: 95 },
       { name: "React.js", level: 92 },
+      { name: "TypeScript", level: 85 },
       { name: "Next.js / Nuxt.js", level: 86 },
       { name: "JavaScript (ES6+)", level: 94 },
       { name: "Tailwind CSS / Bootstrap", level: 93 },
@@ -364,7 +426,7 @@ export const skillGroups = [
     accent: "brand-3",
     skills: [
       { name: "Python & Agentic AI", level: 94 },
-      { name: "FastAPI / Flask", level: 90 },
+      { name: "FastAPI / Flask / Django", level: 90 },
       { name: "Express.js / Node.js", level: 88 },
       { name: "Laravel & Core PHP", level: 90 },
       { name: ".NET Core / MVC", level: 85 },
@@ -397,6 +459,7 @@ export const tools = [
   "Notepad++",
   "GitHub Desktop",
   "Google Colab",
+  "Ollama",
   "Microsoft Copilot",
   "IIS",
   "AWS EC2",
@@ -472,12 +535,132 @@ export const languages = [
 export const navLinks = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
+  { id: "ai", label: "AI Engineering" },
   { id: "experience", label: "Experience" },
   { id: "nice", label: "NICE" },
   { id: "projects", label: "Projects" },
+  { id: "research", label: "Research" },
   { id: "skills", label: "Skills" },
   { id: "education", label: "Education" },
   { id: "contact", label: "Contact" },
+];
+
+/**
+ * AI Engineering — how the full-stack background carries into LLM, agentic and
+ * retrieval work. Every tool named here is one used on the projects and roles
+ * above; `proof` points back at where that work actually runs.
+ */
+export const aiEngineering = {
+  lead:
+    "Ten years of shipping production software, now applied to LLM systems: agents that plan and call tools, retrieval that grounds every answer, and the APIs, interfaces and deployments that put them in front of real users.",
+  pipeline: [
+    { step: "Ingest", detail: "Docs, news, records" },
+    { step: "Embed", detail: "Chunking · embeddings" },
+    { step: "Index", detail: "ChromaDB · FAISS · Qdrant" },
+    { step: "Retrieve", detail: "Semantic + hybrid" },
+    { step: "Reason", detail: "LLM agents · LangGraph" },
+    { step: "Act", detail: "Function calling · MCP" },
+    { step: "Evaluate", detail: "Review · human-in-the-loop" },
+    { step: "Deploy", detail: "FastAPI · services · CI" },
+  ],
+  pillars: [
+    {
+      id: "llm",
+      icon: "Sparkles",
+      title: "LLMs & Generative AI",
+      body: "Integrating hosted and locally served large language models into products — prompt engineering, structured outputs and function calling, from ChatGPT-driven book generation to on-premise models via Ollama.",
+      tags: ["LLMs", "Generative AI", "Prompt Engineering", "OpenAI API", "Ollama"],
+    },
+    {
+      id: "agentic",
+      icon: "Bot",
+      title: "Agentic AI & Multi-Agent Systems",
+      body: "Agents that plan, delegate and use tools — orchestrated with Google ADK, LangChain and LangGraph, with human review kept in the loop where decisions matter.",
+      tags: ["Google ADK", "LangGraph", "LangChain", "Multi-Agent", "Human-in-the-Loop"],
+    },
+    {
+      id: "rag",
+      icon: "Database",
+      title: "RAG & Agentic RAG",
+      body: "Retrieval pipelines that ground answers in an organisation's own data — chunking and embeddings, vector indexes, semantic and hybrid retrieval, and agents that decide what to retrieve next.",
+      tags: ["RAG", "Agentic RAG", "Embeddings", "Semantic Search", "Hybrid Retrieval", "ChromaDB", "FAISS", "Qdrant"],
+    },
+    {
+      id: "mcp",
+      icon: "Plug",
+      title: "MCP & Tool Integration",
+      body: "Model Context Protocol servers and function-calling tools that give models safe, typed access to internal systems, databases and APIs.",
+      tags: ["MCP", "Function Calling", "Tool Use", "FastAPI", "REST APIs"],
+    },
+    {
+      id: "dl",
+      icon: "ScanEye",
+      title: "Deep Learning & Computer Vision",
+      body: "PyTorch models built from CNNs and Transformer architectures — including research into generating X-ray reports from medical images.",
+      tags: ["PyTorch", "Deep Learning", "CNNs", "Transformers", "Computer Vision"],
+    },
+    {
+      id: "prod",
+      icon: "Rocket",
+      title: "Full-Stack AI Delivery",
+      body: "The part most AI prototypes miss: React and Vue front ends, Python and Laravel back ends, SQL data layers, evaluation and production deployment on servers and the cloud.",
+      tags: ["React", "TypeScript", "Python", "Django", "Laravel", "SQL", "AWS EC2", "CI/CD"],
+    },
+  ],
+  proof: [
+    {
+      name: "NICE",
+      where: "ISMO · Production",
+      body: "Agentic collection, categorisation, sentiment scoring and automated executive briefs — backed by an ISMO technical confirmation letter.",
+      href: "#nice",
+    },
+    {
+      name: "Enterprise Agentic RAG",
+      where: "ISMO",
+      body: "Chatbots and workflow automation over internal knowledge with Google ADK, LangChain, MCP and vector search.",
+      href: "#projects",
+    },
+    {
+      name: "Artziii",
+      where: "US product · AWS",
+      body: "An AI-first publishing app where roughly 90% of the feature set is AI driven, deployed on AWS EC2.",
+      href: "#experience",
+    },
+    {
+      name: "Power Sector Forecasting",
+      where: "NTDC · ISMO",
+      body: "Marginal-price analysis with machine learning and foundation models for Pakistan's power sector.",
+      href: "#research",
+    },
+  ],
+};
+
+/** Research threads — doctoral work and applied deep-learning projects. */
+export const research = [
+  {
+    icon: "GraduationCap",
+    title: "Doctoral research — Agentic AI & RAG",
+    status: "PhD · In progress",
+    org: "FAST-NUCES, Islamabad",
+    body: "Extending production work in agentic AI and retrieval-augmented generation, alongside forecasting with foundation models.",
+    tags: ["Agentic AI", "RAG", "Foundation Models"],
+  },
+  {
+    icon: "ScanEye",
+    title: "X-ray Report Generation",
+    status: "Deep Learning",
+    org: "Medical imaging",
+    body: "Generating radiology reports from X-ray images by pairing computer-vision encoders with Transformer architectures.",
+    tags: ["PyTorch", "CNNs", "Transformers", "Computer Vision"],
+  },
+  {
+    icon: "LineChart",
+    title: "Power Sector Forecasting",
+    status: "Applied ML",
+    org: "NTDC · ISMO",
+    body: "EDA and KDD on marginal-price data using machine learning and foundation models, building on the MS Data Science (Silver Medalist) programme.",
+    tags: ["Foundation Models", "Forecasting", "scikit-learn", "Pandas"],
+  },
 ];
 
 /**

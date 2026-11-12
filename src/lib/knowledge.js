@@ -17,6 +17,7 @@
 
 import {
   achievements,
+  aiEngineering,
   education,
   experience,
   flagship,
@@ -24,6 +25,7 @@ import {
   languages,
   profile,
   projects,
+  research,
   skillGroups,
   stats,
   tools,
@@ -190,6 +192,46 @@ function flagshipDocs() {
   ];
 }
 
+function aiDocs() {
+  return [
+    {
+      id: "ai-overview",
+      type: "ai",
+      title: "AI Engineering",
+      section: "ai",
+      answer: `${aiEngineering.lead} Capabilities: ${list(aiEngineering.pillars.map((p) => p.title))}.`,
+      text: [
+        aiEngineering.lead,
+        aiEngineering.pillars.map((p) => `${p.title} ${p.tags.join(" ")}`).join(" "),
+        aiEngineering.pipeline.map((s) => `${s.step} ${s.detail}`).join(" "),
+        "ai engineer artificial intelligence machine learning llm generative",
+      ].join(" "),
+      keywords: "ai engineer engineering artificial intelligence llm generative capabilities",
+    },
+    ...aiEngineering.pillars.map((p) => ({
+      id: `ai-${p.id}`,
+      type: "ai",
+      title: p.title,
+      section: "ai",
+      answer: `${p.title} — ${p.body} Stack: ${list(p.tags)}.`,
+      text: `${p.title} ${p.body} ${p.tags.join(" ")}`,
+      keywords: `${p.title} ${p.tags.join(" ")}`.toLowerCase(),
+    })),
+  ];
+}
+
+function researchDocs() {
+  return research.map((r) => ({
+    id: `research-${r.title}`,
+    type: "research",
+    title: r.title,
+    section: "research",
+    answer: `${r.title} (${r.status}, ${r.org}) — ${r.body} Tags: ${list(r.tags)}.`,
+    text: `${r.title} ${r.status} ${r.org} ${r.body} ${r.tags.join(" ")} research study thesis`,
+    keywords: "research study academic thesis doctoral deep learning",
+  }));
+}
+
 function skillDocs() {
   return [
     ...skillGroups.map((g) => ({
@@ -270,6 +312,8 @@ export const documents = [
   ...experienceDocs(),
   ...projectDocs(),
   ...flagshipDocs(),
+  ...aiDocs(),
+  ...researchDocs(),
   ...skillDocs(),
   ...educationDocs(),
 ];
@@ -351,6 +395,18 @@ export const datasets = {
     columns: ["function", "what it does"],
     rows: flagship.coreFunctions.map((f) => ({ function: f.title, "what it does": f.body })),
   },
+  ai: {
+    label: "AI Engineering capabilities",
+    section: "ai",
+    columns: ["capability", "stack"],
+    rows: aiEngineering.pillars.map((p) => ({ capability: p.title, stack: p.tags.join(", ") })),
+  },
+  research: {
+    label: "Research",
+    section: "research",
+    columns: ["title", "status", "org"],
+    rows: research.map((r) => ({ title: r.title, status: r.status, org: r.org })),
+  },
   contact: {
     label: "Contact",
     section: "contact",
@@ -368,7 +424,9 @@ export const datasets = {
 export const SECTION_LABELS = {
   home: "Home",
   about: "About",
+  ai: "AI Engineering",
   experience: "Experience",
+  research: "Research",
   nice: "NICE",
   projects: "Projects",
   skills: "Skills",
